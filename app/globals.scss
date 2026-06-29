@@ -1,0 +1,66 @@
+// Gruvbox Dark Palette
+$red: #cc241d;
+$yellow: #fabd2f;
+$green: #98971a;
+$blue: #458588;
+$purple: #b16286;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+:root {
+  --bg: #1d2021;
+  --surface: #32302f;
+  --text: #bdae93;
+
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fbf1c7;
+    --surface: #ebdbb2;
+    --text: #3c3836;
+  }
+}
+
+body {
+  font-family: "JetBrains Mono", monospace;
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    color: $blue;
+    text-decoration: underline;
+  }
+
+  input[type='text'] {
+    background-color: var(--surface);
+    color: var(--text);
+    outline: none;
+    padding: 0.25rem;
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(90deg, $red, $yellow, $green, $blue, $purple) 1;
+  }
+
+  button {
+    background-color: var(--bg);
+    color: var(--text);
+    padding: 0.25rem;
+
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(90deg, $green, $blue) 1;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: $blue;
+      color: $yellow;
+    }
+  }
+}
