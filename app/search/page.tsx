@@ -2,7 +2,12 @@ import styles from "./page.module.scss";
 import { Suspense } from "react";
 import Image from "next/image";
 import Form from "next/form";
-import { graffle } from "@/app/_lib/graffle-client";
+import { gql, TypedDocumentNode } from "@apollo/client";
+import { query } from "../ApolloClient";
+import {
+  SearchMediaQuery,
+  SearchMediaQueryVariables,
+} from "../_types/__generated__/graphql";
 
 export default async function Page({
   searchParams,
@@ -31,35 +36,41 @@ export default async function Page({
 }
 
 async function Results({ query: search }: { query: string }) {
-  const query = graffle.gql(
-    `
-      query searchMedia($search: String!) {
-        Page(perPage: 15) {
-          media(isAdult: false, search: $search, sort: FAVOURITES_DESC ) {
-            id
-            coverImage {
-              extraLarge
-            }
-            status
-            favourites
-            startDate {
-              month
-              year
-            }
-            type
-            title {
-              english
-              native
-            }
+  const SEARCH_MEDIA: TypedDocumentNode<
+    SearchMediaQuery,
+    SearchMediaQueryVariables
+  > = gql`
+    query searchMedia($search: String!) {
+      Page(perPage: 15) {
+        media(isAdult: false, search: $search, sort: FAVOURITES_DESC) {
+          id
+          coverImage {
+            extraLarge
+          }
+          status
+          favourites
+          startDate {
+            month
+            year
+          }
+          type
+          title {
+            english
+            native
           }
         }
       }
-    `,
-  );
+    }
+  `;
 
-  const response = await query.searchMedia({ search });
+  const { data } = await query({
+    query: SEARCH_MEDIA,
+    variables: {
+      search: search,
+    },
+  });
 
-  const media = response?.Page?.media?.filter(Boolean) ?? [];
+  const media = data?.Page?.media?.filter(Boolean) ?? [];
 
   return (
     <div className={styles.results}>

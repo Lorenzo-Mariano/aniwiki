@@ -1,6 +1,0 @@
-export type DATE = "DATE"
-export type DATE_DESC = "DATE_DESC"
-export type COUNT = "COUNT"
-export type COUNT_DESC = "COUNT_DESC"
-export type CHANGE = "CHANGE"
-export type CHANGE_DESC = "CHANGE_DESC"

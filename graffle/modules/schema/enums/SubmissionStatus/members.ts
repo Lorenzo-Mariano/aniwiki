@@ -1,4 +1,0 @@
-export type PENDING = "PENDING"
-export type REJECTED = "REJECTED"
-export type PARTIALLY_ACCEPTED = "PARTIALLY_ACCEPTED"
-export type ACCEPTED = "ACCEPTED"

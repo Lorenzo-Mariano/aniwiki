@@ -1,8 +1,0 @@
-export type ID = "ID"
-export type ID_DESC = "ID_DESC"
-export type COUNT = "COUNT"
-export type COUNT_DESC = "COUNT_DESC"
-export type PROGRESS = "PROGRESS"
-export type PROGRESS_DESC = "PROGRESS_DESC"
-export type MEAN_SCORE = "MEAN_SCORE"
-export type MEAN_SCORE_DESC = "MEAN_SCORE_DESC"

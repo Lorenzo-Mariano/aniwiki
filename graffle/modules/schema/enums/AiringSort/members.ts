@@ -1,8 +1,0 @@
-export type ID = "ID"
-export type ID_DESC = "ID_DESC"
-export type MEDIA_ID = "MEDIA_ID"
-export type MEDIA_ID_DESC = "MEDIA_ID_DESC"
-export type TIME = "TIME"
-export type TIME_DESC = "TIME_DESC"
-export type EPISODE = "EPISODE"
-export type EPISODE_DESC = "EPISODE_DESC"

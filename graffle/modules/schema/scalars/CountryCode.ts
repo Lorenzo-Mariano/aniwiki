@@ -1,1 +1,0 @@
-export type { CountryCode } from '../../scalar.js'
