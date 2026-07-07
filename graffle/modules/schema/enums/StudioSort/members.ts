@@ -1,0 +1,7 @@
+export type ID = "ID"
+export type ID_DESC = "ID_DESC"
+export type NAME = "NAME"
+export type NAME_DESC = "NAME_DESC"
+export type SEARCH_MATCH = "SEARCH_MATCH"
+export type FAVOURITES = "FAVOURITES"
+export type FAVOURITES_DESC = "FAVOURITES_DESC"

@@ -1,0 +1,1 @@
+export type { FuzzyDateInt } from '../../scalar.js'

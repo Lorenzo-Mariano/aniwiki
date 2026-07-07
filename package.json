@@ -9,11 +9,14 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@apollo/client": "^4.2.5",
+    "@apollo/client-integration-nextjs": "^0.14.5",
     "graffle": "8.0.0-next.223",
     "graphql": "^17.0.1",
     "next": "16.2.9",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "rxjs": "^7.8.2",
     "swr": "^2.4.2"
   },
   "devDependencies": {

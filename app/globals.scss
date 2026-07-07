@@ -1,19 +1,19 @@
-// Gruvbox Dark Palette
-$red: #cc241d;
-$yellow: #fabd2f;
-$green: #98971a;
-$blue: #458588;
-$purple: #b16286;
-
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 :root {
   --bg: #1d2021;
   --surface: #32302f;
   --text: #bdae93;
+  --red: #cc241d;
+  --yellow: #fabd2f;
+  --green: #98971a;
+  --blue: #458588;
+  --purple: #b16286;
 
-  background-color: var(--bg);
-  color: var(--text);
+  * {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 @media (prefers-color-scheme: light) {
@@ -26,14 +26,10 @@ $purple: #b16286;
 
 body {
   font-family: "JetBrains Mono", monospace;
-
-  * {
-    padding: 0;
-    margin: 0;
-  }
+  color: var(--text);
 
   a {
-    color: $blue;
+    color: var(--blue);
     text-decoration: underline;
   }
 
@@ -44,7 +40,16 @@ body {
     padding: 0.25rem;
     border-width: 2px;
     border-style: solid;
-    border-image: linear-gradient(90deg, $red, $yellow, $green, $blue, $purple) 1;
+    border-image: linear-gradient(90deg,
+        var(--red),
+        var(--yellow),
+        var(--green),
+        var(--blue),
+        var(--purple)) 1;
+
+    &:focus {
+      border-width: 4px;
+    }
   }
 
   button {
@@ -54,13 +59,23 @@ body {
 
     border-width: 2px;
     border-style: solid;
-    border-image: linear-gradient(90deg, $green, $blue) 1;
+    border-image: linear-gradient(90deg, var(--green), var(--blue)) 1;
 
     cursor: pointer;
 
-    &:hover {
-      background-color: $blue;
-      color: $yellow;
+    &:hover,
+    &:focus {
+      background-color: var(--blue);
+      color: var(--yellow);
     }
   }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--bg);
+  min-height: 100svh;
 }

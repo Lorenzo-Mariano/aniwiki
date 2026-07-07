@@ -1,0 +1,146 @@
+import type { Schema as $Schema } from '../../_.js'
+
+/**
+* GraphQL `__typename` meta-field. The name of the object type currently being queried.
+*
+* Type: `"UserStaffStatistic"`
+*
+* {@link https://graphql.org/learn/queries/#meta-fields | GraphQL __typename documentation}
+*/
+export interface __typename {
+kind: "OutputField",
+name: "__typename",
+arguments: {},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserStaffStatistic"
+}
+}
+
+/**
+* GraphQL {@link https://graphql.org/learn/queries/#fields | output field} ↗ on type {@link $Schema.UserStaffStatistic}.
+*
+* # Info
+*
+* | | |
+* | - | - |
+* | **Type** | {@link $Schema.Int}! |
+* | **Kind** | {@link https://graphql.org/graphql-js/type/#scalars | ScalarStandard ↗} |
+* | **Parent** | {@link $Schema.UserStaffStatistic} |
+* | **Path** | `UserStaffStatistic.count` |
+* | **Nullability** | Required |
+*/
+export interface count {
+kind: "OutputField",
+name: "count",
+arguments: {},
+inlineType: [1, ],
+namedType: $Schema.Int
+}
+
+/**
+* GraphQL {@link https://graphql.org/learn/queries/#fields | output field} ↗ on type {@link $Schema.UserStaffStatistic}.
+*
+* # Info
+*
+* | | |
+* | - | - |
+* | **Type** | {@link $Schema.Float}! |
+* | **Kind** | {@link https://graphql.org/graphql-js/type/#scalars | ScalarStandard ↗} |
+* | **Parent** | {@link $Schema.UserStaffStatistic} |
+* | **Path** | `UserStaffStatistic.meanScore` |
+* | **Nullability** | Required |
+*/
+export interface meanScore {
+kind: "OutputField",
+name: "meanScore",
+arguments: {},
+inlineType: [1, ],
+namedType: $Schema.Float
+}
+
+/**
+* GraphQL {@link https://graphql.org/learn/queries/#fields | output field} ↗ on type {@link $Schema.UserStaffStatistic}.
+*
+* # Info
+*
+* | | |
+* | - | - |
+* | **Type** | {@link $Schema.Int}! |
+* | **Kind** | {@link https://graphql.org/graphql-js/type/#scalars | ScalarStandard ↗} |
+* | **Parent** | {@link $Schema.UserStaffStatistic} |
+* | **Path** | `UserStaffStatistic.minutesWatched` |
+* | **Nullability** | Required |
+*/
+export interface minutesWatched {
+kind: "OutputField",
+name: "minutesWatched",
+arguments: {},
+inlineType: [1, ],
+namedType: $Schema.Int
+}
+
+/**
+* GraphQL {@link https://graphql.org/learn/queries/#fields | output field} ↗ on type {@link $Schema.UserStaffStatistic}.
+*
+* # Info
+*
+* | | |
+* | - | - |
+* | **Type** | {@link $Schema.Int}! |
+* | **Kind** | {@link https://graphql.org/graphql-js/type/#scalars | ScalarStandard ↗} |
+* | **Parent** | {@link $Schema.UserStaffStatistic} |
+* | **Path** | `UserStaffStatistic.chaptersRead` |
+* | **Nullability** | Required |
+*/
+export interface chaptersRead {
+kind: "OutputField",
+name: "chaptersRead",
+arguments: {},
+inlineType: [1, ],
+namedType: $Schema.Int
+}
+
+/**
+* GraphQL {@link https://graphql.org/learn/queries/#fields | output field} ↗ on type {@link $Schema.UserStaffStatistic}.
+*
+* # Info
+*
+* | | |
+* | - | - |
+* | **Type** | {@link $Schema.Int}[]! |
+* | **Kind** | {@link https://graphql.org/graphql-js/type/#scalars | ScalarStandard ↗} |
+* | **Parent** | {@link $Schema.UserStaffStatistic} |
+* | **Path** | `UserStaffStatistic.mediaIds` |
+* | **Nullability** | Required |
+* | **List** | Yes |
+*/
+export interface mediaIds {
+kind: "OutputField",
+name: "mediaIds",
+arguments: {},
+inlineType: [1, [0, ]],
+namedType: $Schema.Int
+}
+
+/**
+* GraphQL {@link https://graphql.org/learn/queries/#fields | output field} ↗ on type {@link $Schema.UserStaffStatistic}.
+*
+* # Info
+*
+* | | |
+* | - | - |
+* | **Type** | {@link $Schema.Staff} |
+* | **Kind** | {@link https://graphql.org/graphql-js/type/#graphqlobjecttype | OutputObject ↗} |
+* | **Parent** | {@link $Schema.UserStaffStatistic} |
+* | **Path** | `UserStaffStatistic.staff` |
+* | **Nullability** | Optional |
+*/
+export interface staff {
+kind: "OutputField",
+name: "staff",
+arguments: {},
+inlineType: [0, ],
+namedType: $Schema.Staff
+}

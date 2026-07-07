@@ -1,0 +1,4 @@
+export type THREAD = "THREAD"
+export type THREAD_COMMENT = "THREAD_COMMENT"
+export type ACTIVITY = "ACTIVITY"
+export type ACTIVITY_REPLY = "ACTIVITY_REPLY"

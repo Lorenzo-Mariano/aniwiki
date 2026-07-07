@@ -1,0 +1,8 @@
+export type NOTE = "NOTE"
+export type BAN = "BAN"
+export type DELETE = "DELETE"
+export type EDIT = "EDIT"
+export type EXPIRE = "EXPIRE"
+export type REPORT = "REPORT"
+export type RESET = "RESET"
+export type ANON = "ANON"
