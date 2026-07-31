@@ -25,3 +25,22 @@
     min-width: 320px;
   }
 }
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--bg);
+  min-height: calc(100svh - 3rem);
+  text-align: center;
+
+  h1 {
+    font-size: var(--font-bigger)
+  }
+
+  p {
+    font-size: var(--font-big)
+  }
+}

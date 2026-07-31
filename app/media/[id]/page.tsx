@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { redirect } from "next/navigation";
 import { Characters } from "./_components/characters";
 import { Intro } from "./_components/intro";
 import { Reviews } from "./_components/reviews";
@@ -11,8 +12,8 @@ export default async function Page({
 }) {
     const { id } = await params;
 
-    if (!id) {
-        return;
+    if (!id || !/^\d+$/.test(id)) {
+        return redirect("/search");
     }
 
     return (

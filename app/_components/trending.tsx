@@ -73,7 +73,7 @@ export default async function TrendingMedia() {
                                         <span>
                                             {item.type === "ANIME"
                                                 ? "Anime"
-                                                : "Manga"}
+                                                : "Comics"}
                                         </span>
                                         <span className={styles.favs}>
                                             {item.favourites} Favourites

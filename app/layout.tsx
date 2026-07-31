@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "fml",
-    description: "i was looking for a job and then i found a job",
+    title: "aniwiki",
+    description: "learn about and read reviews of anime and manga",
 };
 
 export default function RootLayout({

@@ -2,6 +2,10 @@
   background-color: var(--surface);
 }
 
+.loading {
+  background-color: var(--bg);
+}
+
 .content {
   display: flex;
   flex-direction: column;

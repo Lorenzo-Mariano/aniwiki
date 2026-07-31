@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import parse from "html-react-parser";
 import { query } from "@/app/ApolloClient";
 import { GetMediaQuery } from "@/app/_types/__generated__/graphql";
@@ -6,26 +7,26 @@ import { GET_MEDIUM } from "@/app/queries";
 import styles from "./intro.module.scss";
 
 export async function Intro({ mediaId }: { mediaId: string }) {
-    const { data } = await query({
+    const { data, error } = await query({
         query: GET_MEDIUM,
         variables: {
             id: Number(mediaId),
         },
+        errorPolicy: "all",
     });
 
-    if (!data?.Media) {
-        return (
-            <div>
-                <h1>something went wrong (no data)</h1>
-            </div>
-        );
+    if (!data?.Media || error?.message) {
+        notFound();
+        // return (
+        //     <div>
+        //         <h1>something went wrong (no data)</h1>
+        //     </div>
+        // );
     }
 
     const { Media } = data;
 
     if (!Media.title) {
-        // TODO filter out anything that doesn't even have a title
-        // from the search results.
         return;
     }
 
@@ -39,7 +40,7 @@ export async function Intro({ mediaId }: { mediaId: string }) {
             <div className={styles.text}>
                 <div className={styles.titles}>
                     <h1>{english || romaji || native}</h1>
-                    <h2>Type: {Media.type === "ANIME" ? "Anime" : "Manga"}</h2>
+                    <h2>Type: {Media.type === "ANIME" ? "Anime" : "Comics"}</h2>
                     <h2>{native && `Original: ${native}`}</h2>
                     <h2>{romaji && `Romaji: ${romaji}`}</h2>
                 </div>

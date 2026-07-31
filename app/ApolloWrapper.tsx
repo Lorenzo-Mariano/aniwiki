@@ -38,53 +38,15 @@ function makeClient() {
                             keyArgs: false,
                             merge(existing, incoming) {
                                 if (!existing) {
-                                    console.log("ONLY incoming:", incoming);
-
                                     return {
                                         ...incoming,
                                     };
                                 }
 
-                                console.log("incoming:", incoming);
-                                console.log("existing:", existing);
-
-                                // sample incoming
-                                // {
-                                //   "__typename": "ReviewConnection",
-                                //   "edges": [
-                                //     {
-                                //       "__typename": "ReviewEdge",
-                                //       "node": {
-                                //         "__ref": "Review:12434"
-                                //       }
-                                //     },
-                                //     {
-                                //       "__typename": "ReviewEdge",
-                                //       "node": {
-                                //         "__ref": "Review:7481"
-                                //       }
-                                //     },
-                                //     {
-                                //       "__typename": "ReviewEdge",
-                                //       "node": {
-                                //         "__ref": "Review:25604"
-                                //       }
-                                //     }
-                                //   ],
-                                //   "pageInfo": {
-                                //     "__typename": "PageInfo",
-                                //     "currentPage": 2,
-                                //     "hasNextPage": true
-                                //   }
-                                // }
-
                                 const toAdd = [];
 
                                 // grab individual obj in incoming.edges...
                                 for (const edge of incoming.edges) {
-                                    console.log("grabbing:", edge.node.__ref);
-                                    console.log("We gon compare it to:");
-
                                     let foundDupe = false;
 
                                     for (const existingEdge of existing.edges) {
@@ -96,25 +58,13 @@ function makeClient() {
                                             edge.node.__ref
                                         ) {
                                             foundDupe = true;
-                                            console.log(
-                                                "FOUND DOOP FOR",
-                                                edge.node.__ref,
-                                                "WILL NOT PUSH",
-                                            );
                                         }
                                     }
 
                                     if (!foundDupe) {
-                                        console.log(
-                                            "Found no dupe for",
-                                            edge.node.__ref,
-                                            "gonna push",
-                                        );
                                         toAdd.push(edge);
                                     }
                                 }
-
-                                console.log(toAdd);
 
                                 console.log("our new reviews obj", {
                                     ...incoming,
