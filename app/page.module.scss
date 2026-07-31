@@ -1,77 +1,27 @@
 .page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  height: 100vh;
 
-    & > * {
-        width: 100%;
-    }
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--bg);
+
+  &>*:nth-child(even) {
+    background-color: var(--surface);
+  }
 }
 
 .form {
-    min-height: 95svh;
-    background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-}
+  gap: 1rem;
+  min-height: 80svh;
 
-.trending {
-    background-color: var(--surface);
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding: 2rem 0;
-
-    header {
-        align-self: center;
-    }
-
-    .results {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 2rem;
-    }
-
-    .card {
-        display: flex;
-        flex-direction: column;
-
-        max-width: 300px;
-        width: 100%;
-
-        padding: 1rem;
-        background-color: var(--bg);
-    }
-
-    .details {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-
-    a {
-        color: unset;
-        text-decoration: unset;
-
-        &.title {
-            flex: 1;
-            margin-bottom: 1rem;
-
-            p {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-        }
-
-        &:hover {
-            font-weight: bold;
-        }
-    }
+  input {
+    min-width: 320px;
+  }
 }

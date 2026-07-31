@@ -1,13 +1,31 @@
+import { Suspense } from "react";
+import { Characters } from "./_components/characters";
+import { Intro } from "./_components/intro";
+import { Reviews } from "./_components/reviews";
+import styles from "./page.module.scss";
+
 export default async function Page({
     params,
 }: {
     params: Promise<{ id: string }>;
 }) {
-    const stuff = await params;
+    const { id } = await params;
+
+    if (!id) {
+        return;
+    }
+
     return (
-        <main>
-            <h1>helloasdkfjasdjf</h1>
-            <span>id: {stuff.id}</span>
+        <main className={styles.page}>
+            <Intro mediaId={id} />
+            <Suspense fallback={<LoadingChars />}>
+                <Characters />
+            </Suspense>
+            <Reviews mediaId={id} />
         </main>
     );
+}
+
+function LoadingChars() {
+    return <div className={styles.loadingChars}></div>;
 }

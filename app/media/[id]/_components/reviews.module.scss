@@ -1,0 +1,107 @@
+$profilePicSize: 60px;
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+
+  h2 {
+    font-size: var(--font-big);
+    color: var(--green);
+  }
+
+  .review {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+
+    .reviewHeader {
+      display: flex;
+      gap: 0.5rem;
+
+      .imgWrapper {
+        position: relative;
+        height: $profilePicSize;
+        width: $profilePicSize;
+
+        img {
+          object-fit: cover;
+        }
+      }
+
+      .text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        .username {
+          color: var(--blue);
+        }
+
+        .verdict {
+          color: var(--purple);
+        }
+
+        .reviewRating {
+          font-size: var(--font-small);
+        }
+      }
+    }
+
+    .reviewBody {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      background-color: var(--surface);
+      padding: 1rem;
+
+      .summary {
+        font-size: var(--font-big);
+        color: var(--purple);
+      }
+
+      ul,
+      ol {
+        padding-left: 1rem;
+      }
+
+      img {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      pre {
+        white-space: pre-wrap;
+      }
+    }
+  }
+
+  .noReviews {
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews {
+    &>* {
+      padding: 0 1rem;
+    }
+
+    h2 {
+      font-size: unset;
+    }
+
+    .review {
+      .reviewBody {
+        font-size: var(--font-small);
+
+        .summary {
+          font-size: var(--font-big);
+        }
+      }
+    }
+  }
+}

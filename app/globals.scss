@@ -1,84 +1,126 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
 
 :root {
-    --bg: #1d2021;
-    --surface: #32302f;
-    --text: #bdae93;
-    --red: #cc241d;
-    --yellow: #fabd2f;
-    --green: #98971a;
-    --blue: #458588;
-    --purple: #b16286;
+  --bg: #1d2021;
+  --surface: #32302f;
+  --text: #bdae93;
+  --red: #cc241d;
+  --yellow: #fabd2f;
+  --green: #98971a;
+  --blue: #458588;
+  --purple: #b16286;
 
-    * {
-        padding: 0;
-        margin: 0;
-    }
-}
 
-@media (prefers-color-scheme: light) {
-    :root {
-        --bg: #fbf1c7;
-        --surface: #ebdbb2;
-        --text: #3c3836;
-    }
-}
+  // Apply background (bg or surface, pick one) + background-size to get pattern effect.
+  --bg-pattern: radial-gradient(circle, transparent 20%, var(--bg) 20%, var(--bg) 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, var(--bg) 20%, var(--bg) 80%, transparent 80%, transparent) 25px 25px, linear-gradient(var(--surface) 2px, transparent 2px) 0 -1px, linear-gradient(90deg, var(--surface) 2px, var(--bg) 2px) -1px 0;
+  --surface-pattern: radial-gradient(circle, transparent 20%, var(--surface) 20%, var(--surface) 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, var(--surface) 20%, var(--surface) 80%, transparent 80%, transparent) 25px 25px, linear-gradient(var(--bg) 2px, transparent 2px) 0 -1px, linear-gradient(90deg, var(--bg) 2px, var(--surface) 2px) -1px 0;
+  --bg-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
 
-body {
-    font-family: "JetBrains Mono", monospace;
+  --font-bigger: 1.5rem;
+  --font-big: 1.2rem;
+  --font-small: 0.8rem;
+  --font-extra-small: 0.65rem;
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: unset;
+  }
+
+  body {
+    font-family: "Sen", monospace;
     color: var(--text);
 
+    // pattern idk lkdfjaslk jflks;
+    background-color: var(--pattern-color);
+    background-image: var(--pattern-bg);
+    background-size: var(--pattern-size);
+
     a {
-        color: var(--blue);
-        text-decoration: underline;
+      color: var(--yellow);
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        font-weight: 500;
+      }
     }
 
     input[type="text"] {
-        background-color: var(--surface);
-        color: var(--text);
-        outline: none;
-        padding: 0.25rem;
-        border-width: 2px;
-        border-style: solid;
-        border-image: linear-gradient(
-                90deg,
-                var(--red),
-                var(--yellow),
-                var(--green),
-                var(--blue),
-                var(--purple)
-            )
-            1;
+      background-color: var(--surface);
+      color: var(--text);
+      outline: none;
+      padding: 0.5rem;
+      border-width: 1px;
+      border-style: solid;
+      border-image: var(--text);
 
-        &:focus {
-            border-width: 4px;
-        }
+      &:focus {
+        border-image: linear-gradient(90deg,
+            var(--red),
+            var(--yellow),
+            var(--green),
+            var(--blue),
+            var(--purple)) 1;
+      }
     }
 
     button {
-        background-color: var(--bg);
-        color: var(--text);
-        padding: 0.25rem;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 0.5rem;
 
-        border-width: 2px;
-        border-style: solid;
+      border-width: 1px;
+      border-style: solid;
+      border-image: var(--text);
+
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
         border-image: linear-gradient(90deg, var(--green), var(--blue)) 1;
+        background-color: var(--surface);
+        color: var(--yellow);
+      }
+    }
+  }
+}
 
-        cursor: pointer;
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fbf1c7;
+    --surface: #ebdbb2;
+    --text: #3c3836;
+
+    body {
+      a {
+        color: var(--red);
+      }
+
+      button {
 
         &:hover,
         &:focus {
-            background-color: var(--blue);
-            color: var(--yellow);
+          color: var(--blue);
         }
+      }
     }
+  }
 }
 
 .loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    background-color: var(--bg);
-    min-height: 100svh;
+  background-color: var(--bg);
+  min-height: 100svh;
 }

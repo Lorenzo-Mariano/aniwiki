@@ -1,0 +1,94 @@
+.intro {
+
+  // The images from the api are mostly 3:2 h-w ratio.
+  // We are "reserving" 400 x 300, and making the img
+  // fit itself into that space.
+  .imgWrapper {
+    float: left;
+    position: relative;
+
+    height: 423px;
+    width: 300px;
+
+    margin-right: 1rem;
+
+    .coverImage {
+      // Imagine putting a really small image in the parent.
+      // To fit it in the parent, we must grow it;
+      // Cover: Stop growing when width OR height matches parent's
+      // Contain: Keep growing until we leave no space in the parent
+      object-fit: contain;
+    }
+  }
+
+  .text {
+    .titles {
+      h1 {
+        font-size: var(--font-bigger);
+        color: var(--blue);
+      }
+
+      h2 {
+        font-weight: unset;
+        font-size: var(--font-small);
+        color: var(--purple);
+      }
+    }
+
+    h3 {
+      font-size: var(--font-big);
+      color: var(--green);
+    }
+
+    .synopsis {
+      text-align: justify;
+
+      h3 {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+
+}
+
+
+@media (max-width: 768px) {
+  .intro {
+    .imgWrapper {
+      height: 211px;
+      width: 150px;
+      margin: 0 1rem;
+    }
+
+    .text {
+      .titles {
+        display: flex;
+        flex-direction: column;
+
+        gap: 0.25rem;
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+
+        h1 {
+          font-size: unset;
+        }
+
+        h2 {
+          font-size: var(--font-extra-small);
+        }
+      }
+
+      .synopsis {
+        margin: 0 1rem;
+
+        h3 {
+          font-size: unset;
+        }
+
+        p {
+          font-size: var(--font-small);
+        }
+      }
+    }
+  }
+}

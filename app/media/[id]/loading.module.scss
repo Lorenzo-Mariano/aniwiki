@@ -1,0 +1,40 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  background-color: var(--bg);
+  min-height: calc(100svh - 3rem);
+
+  .intro {
+    display: flex;
+    gap: 1rem;
+    min-height: 33svh;
+
+    .img {
+      background-color: var(--surface);
+      height: 423px;
+      width: 300px;
+
+      @media (max-width: 768px) {
+        height: 211px;
+        width: 150px;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .characters {
+    flex-grow: 1;
+  }
+
+  &>* {
+    max-width: 900px;
+    width: 100%;
+  }
+
+  &>*:nth-child(even) {
+    background-color: var(--surface);
+  }
+}

@@ -1,56 +1,20 @@
-import Image from "next/image";
-import { TypedDocumentNode, gql } from "@apollo/client";
 import { query } from "@/app/ApolloClient";
-import {
-    SearchMediaQuery,
-    SearchMediaQueryVariables,
-} from "@/app/_types/__generated__/graphql";
+import { SEARCH_MEDIA } from "@/app/queries";
 import { SearchParams } from "../page";
 import styles from "../page.module.scss";
 import Pagination from "./pagination";
+import SearchItem from "./search-item";
 
 export default async function Results(params: SearchParams) {
-    const SEARCH_MEDIA: TypedDocumentNode<
-        SearchMediaQuery,
-        SearchMediaQueryVariables
-    > = gql`
-        query searchMedia($search: String!, $page: Int = 1) {
-            Page(perPage: 10, page: $page) {
-                pageInfo {
-                    currentPage
-                    hasNextPage
-                    lastPage
-                }
-                media(isAdult: false, search: $search, sort: FAVOURITES_DESC) {
-                    id
-                    coverImage {
-                        extraLarge
-                    }
-                    status
-                    favourites
-                    startDate {
-                        month
-                        year
-                    }
-                    type
-                    title {
-                        english
-                        native
-                    }
-                }
-            }
-        }
-    `;
-
     const { data } = await query({
         query: SEARCH_MEDIA,
         variables: {
             search: params.query,
-            page: params.page,
+            page: params.page || 1,
         },
     });
 
-    if (!data || !data.Page || !data.Page.media) {
+    if (!data?.Page?.media || !data?.Page?.pageInfo) {
         return (
             <div className="error">
                 Something went wrong when fetching anime and manga.
@@ -58,72 +22,25 @@ export default async function Results(params: SearchParams) {
         );
     }
 
+    const { media, pageInfo } = data.Page;
+
     return (
-        <div className="wrapper">
+        <div className={styles.wrapper}>
             <div className={styles.results}>
-                {data.Page.media.length === 0 && (
+                {media.length === 0 && (
                     <h3>
                         {`We couldn't find any anime or manga called "${params.query}"`}
                     </h3>
                 )}
-                {data.Page.media.map((item) => {
-                    if (!item) {
-                        return;
-                    }
-
-                    const title =
-                        item.title?.english ?? item.title?.native ?? "Untitled";
-
-                    const date = item.startDate?.year
-                        ? `${item.startDate.year}${
-                              item.startDate.month
-                                  ? `-${String(item.startDate.month).padStart(2, "0")}`
-                                  : ""
-                          }`
-                        : "Unknown";
-
-                    return (
-                        <div key={item.id} className={styles.item}>
-                            {item.coverImage?.extraLarge ? (
-                                <Image
-                                    height={160}
-                                    width={120}
-                                    src={item.coverImage.extraLarge}
-                                    alt={`cover image for ${title}`}
-                                />
-                            ) : (
-                                <div style={{ width: 120, height: 160 }} />
-                            )}
-
-                            <div className="details">
-                                <strong>{title}</strong>
-
-                                <div>
-                                    <span>{item.type ?? "Unknown type"}</span>
-                                </div>
-
-                                <div>
-                                    <span>
-                                        Status: {item.status ?? "Unknown"}
-                                    </span>
-                                </div>
-
-                                <div>
-                                    <span>Start: {date}</span>
-                                </div>
-
-                                <div>
-                                    <span>
-                                        ❤️{" "}
-                                        {item.favourites?.toLocaleString() ?? 0}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })}
+                {media.map(
+                    (item) => item && <SearchItem key={item.id} {...item} />,
+                )}
             </div>
-            <Pagination pageInfo={data.Page.pageInfo} {...params} />
+            <Pagination
+                pageInfo={pageInfo}
+                page={params.page}
+                query={params.query}
+            />
         </div>
     );
 }
